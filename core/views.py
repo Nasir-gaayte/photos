@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
+from .models import CategoryModel, PhotoModel
 # Create your views here.
 
 def home(request):
-    return render(request,'core/home.html')
+    galarys = PhotoModel.objects.all()
+    return render(request,'core/home.html',{'galarys':galarys})
 
 
 

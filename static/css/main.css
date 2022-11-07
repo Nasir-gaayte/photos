@@ -1,0 +1,13 @@
+.imoth {
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.titless{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(219, 128, 128);
+    font-weight: 3.5em;
+}
