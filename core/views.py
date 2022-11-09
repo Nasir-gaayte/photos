@@ -6,13 +6,18 @@ from django.views.generic import CreateView
 # Create your views here.
 
 def home(request):
-    photos = PhotoModel.objects.all()
-    cats = CategoryModel.objects.all()
+    category = request.GET.get('category')
+    if category == None:
+        photos = PhotoModel.objects.all()
+    else:
+        photos = PhotoModel.objects.filter(category__name=category)    
+        print(category)
+   
+    categorys = CategoryModel.objects.all()
     return render(request,'core/home.html',{
         'photos':photos,
-        'cats':cats,
-        })
-
+        'categorys':categorys,
+    })
 
 
 def add(request):

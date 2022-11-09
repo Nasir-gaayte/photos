@@ -20,9 +20,9 @@
                        CATEGORY
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">ALL CATEGORYS</li>
-                      {% for cat in cats %}
-                      <li class="list-group-item">{{cat.name}}</li>
+                    <li class="list-group-item"><a href="{% url 'home'  %}"> ALL CATEGORYS</a></li>
+                      {% for category in categorys %}
+                      <li class="list-group-item"><a href="{% url 'home' %}?category={{category.name}}"> {{category.name}}</a></li>
                       {% endfor%}
                       
                     
@@ -41,7 +41,7 @@
                             <img class="imoth" src="{{photo.image.url}}" class="card-img-top" >
                           
                             <div class="card-body">
-                              <p class="card-text">Category: {{photo.categoryl}}</p>
+                              <p class="card-text">Category: {{photo.category}}</p>
                               <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                             </div>
                           </div>   
