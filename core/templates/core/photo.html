@@ -17,10 +17,14 @@
                 <a href="{% url 'home' %}" class="btn btn-dark my-3">go bake</a>
                 <div style="height: 90%;" >
                     
-                    <dir>
-                        <img style="max-width: 100%; max-height:100%" src="" alt="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In ad ab incidunt facilis illo, ducimus velit reiciendis nisi corrupti! Sint a error accusantium ullam voluptas itaque minima unde veniam officiis.</p>
+                    <dir class="card mt-5 container">
+                        <img style="max-width: 100%; max-height:100%" src="{{photos.image.url}}" alt="">
+                        <div>
+                            <small>Category:-{{photos.category}}</small>
+                        </div>
+                        <p>{{photos.description}}</p>
                     </dir>
+                    
                 </div>
             </div>
         </div>

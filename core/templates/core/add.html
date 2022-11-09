@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load django_bootstrap5 %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,9 +16,38 @@
         <div class="row-justify-content-center">
             <div class="col">
                 <a href="{% url 'home' %}" class="btn btn-dark my-3">go bake</a>
-                <div  class="container titless">
+                <div  class="container">
                     <h1>
                         Add Photo
+                        <div class="card container">
+
+                            <form class="row g-3 container titless " method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group m-3">
+                                    <label >Description</label> 
+                                    <input required name="description" type="text" placeholder="Add your descriptions">
+                                </div>
+                                <div class="form-group m-3">
+                                    <label  >Select Category</label>
+                                <select name="category" class="form-control" >
+                                    <option value="none">Select a category...</option>
+                                    {% for cat in cats %}
+                                    <option value="{{cat.id}}">{{cat.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group m3">
+                                <label >Creat New Category</label>
+                                <input  name="category_new" type="text"  placeholder="add category" class="form-control-file">
+                            </div>
+                            
+                            <div class="form-group m3">
+                                <label >Upload image</label>
+                                <input required name="image" type="file" class="form-control-file">
+                            </div>
+                            <button class="btn btn-dark btn-block" type="submit">ADD</button>
+                        </form>
+                    </div>
                     </h1>
                 </div>
                 <div style="height: 90%;" >

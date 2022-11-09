@@ -13,7 +13,7 @@ class CategoryModel(models.Model):
     
 class PhotoModel(models.Model):
     category = models.ForeignKey(CategoryModel, on_delete = models.CASCADE)
-    image = models.ImageField(null=True, blank=True, upload_to='images/')
+    image = models.ImageField(null=False, blank=False, upload_to="images/")
     description = models.TextField(max_length=500, null=True, blank=True)
     
     

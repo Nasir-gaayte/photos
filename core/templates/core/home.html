@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,10 +20,11 @@
                        CATEGORY
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">ALL</li>
-                      <li class="list-group-item">An item</li>
-                      <li class="list-group-item">A second item</li>
-                      <li class="list-group-item">A third item</li>
+                      <li class="list-group-item">ALL CATEGORYS</li>
+                      {% for cat in cats %}
+                      <li class="list-group-item">{{cat.name}}</li>
+                      {% endfor%}
+                      
                     
                         <a href="{%  url 'add' %}" class="btn  btn-dark btn-block btn-sm m-1">Add Photo</a>
                      
@@ -31,65 +33,23 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
+                  
+                    {% for photo in photos %}
                     <div class="col-md-4">
                         <div class="card my-2" >
-                            <img class="imoth" src="/static/imo/car1.jpeg" class="card-img-top" alt="...">
+                            
+                            <img class="imoth" src="{{photo.image.url}}" class="card-img-top" >
+                          
                             <div class="card-body">
-                              <p class="card-text">Category: cars</p>
-                              <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                              <p class="card-text">Category: {{photo.categoryl}}</p>
+                              <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                             </div>
                           </div>   
                     </div>
-                    {% for gala in galarys %}
-                    <div class="col-md-4">
-                        <div class="card my-2" >
-                            <img class="imoth" src="{{gala.image}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text">Category: {{gala.category}}</p>
-                              <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
-                            </div>
-                          </div>   
-                    </div>
+                    {% empty %}
+                    <h1>no photos</h1>
                     {% endfor %}
-                    <div class="col-md-4">
-                        <div class="card my-2" >
-                            <img class="imoth" src="/static/imo/car1.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text">Category: cars</p>
-                              <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
-                            </div>
-                          </div>   
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2" >
-                            <img class="imoth" src="/static/imo/car1.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text">Category: cars</p>
-                              <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
-                            </div>
-                          </div>   
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2" >
-                            <img class="imoth" src="/static/imo/car1.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text">Category: cars</p>
-                              <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
-                            </div>
-                          </div>   
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2" >
-                            <img class="imoth" src="/static/imo/car1.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text">Category: cars</p>
-                              <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
-                            </div>
-                          </div>   
-                    </div>
+                   
 
                     
                 </div>
