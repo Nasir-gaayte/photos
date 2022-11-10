@@ -24,18 +24,19 @@ def add(request):
     cats = CategoryModel.objects.all()
     if request.method=="POST":
         data = request.POST
-        image = request.FILES.get('image') 
+        images = request.FILES.getlist ('images') 
         if data["category"] != 'none':
             category = CategoryModel.objects.get(id= data['category'])
         elif data['category_new'] != '':
             category, create= CategoryModel.objects.get_or_create(name= data['category_new'])
         else:
             category = None
-        photo = PhotoModel.objects.get_or_create (
-            category = category,
-            description= data['description'],
-            image = image,
-        )  
+        for image in images:    
+            photo = PhotoModel.objects.get_or_create (
+                category = category,
+                description= data['description'],
+                image = image,
+            )  
         return redirect ('home')        
     return render(request,'core/add.html',{
         
