@@ -1,0 +1,15 @@
+{% extends "core/home.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container mt-5" >
+    <h1>LOGIN</h1>
+    <div class="card container">
+        <form class="card" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn btn-dark btn-block "  type="submit">LOGIN</button>
+        </form>
+    </div>
+    To regist cleck <a href="{% url 'register' %}"><span style="color: rgb(87, 241, 67);">here...</span></a>
+  </div>
+{% endblock content %}

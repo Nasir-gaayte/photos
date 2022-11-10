@@ -1,0 +1,14 @@
+{% extends "core/home.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container mt-5" >
+    <h1>REGISTER</h1>
+    <div class="card container">
+        <form class="card" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn btn-dark btn-block "  type="submit">REGISTER</button>
+        </form>
+    </div>
+  </div>
+{% endblock content %}
