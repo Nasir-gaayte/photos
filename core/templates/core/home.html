@@ -73,9 +73,14 @@
                             
                             <img class="imoth" src="{{photo.image.url}}" class="card-img-top" >
                             
-                            <div class="card-body">
+                            <div class="card-body ">
                                 <p class="card-text">Category: {{photo.category}}</p>
                               <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                              
+                              <div>
+                                <button class="btn  btn-outline-success" type="submit"><a href="{% url 'update' photo.id %}">update</a></button>
+                                <button class="btn  btn-outline-danger" type="submit"><a href="{% url 'update' photo.id %}">delete</a></button>
+                              </div>
                             </div>
                           </div>   
                     </div>

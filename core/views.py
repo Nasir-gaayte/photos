@@ -3,6 +3,7 @@ from .models import CategoryModel, PhotoModel
 from .forms import PhotoAddForm
 from django.views import generic
 from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -58,3 +59,17 @@ def photo(request,pk):
     return render(request,'core/photo.html',{
         'photos':photos,
     })
+    
+
+@login_required    
+def update(request, id):
+    toup = PhotoModel.objects.get(pk=id)
+    if request.method == "POST":
+        form = PhotoAddForm(request.POST, instance=toup)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    form=PhotoAddForm(instance=toup)
+    return render(request,'core/update.html',{'form':form})    
+        
+    
