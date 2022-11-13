@@ -9,4 +9,5 @@ urlpatterns = [
     path('add/',views.add,name='add'),
     # path('add/',views.AddPhoto.as_view(),name='add'),
     path('update/<id>/',views.update,name='update'),
+    path('delete/<id>/',views.delete,name='delete'),
 ]
